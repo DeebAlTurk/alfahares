@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>برنامج الفهرس</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Amiri', serif;
+        }
+        section {
+            scroll-margin-top: 100px; /* Adjust based on your navbar height */
+        }
+    </style>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        prime: '#FF7F0B',
+                    },
+                },
+            },
+        };
+    </script>
+s
+    <!-- Flowbite CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet">
+</head><body class="bg-slate-200">
+<!--HEADER START-->
+<nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">برنامج الفهرس</span>
+        </a>
+        <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+            <button type="button" class="hover:!bg-[#FF7F0B80] transition !bg-[#FF7F0B] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-[#FF7F0B] dark:hover:bg-[#FF7F0B80] dark:focus:ring-[#FF7F0B]">تحميل الآن</button>
+            <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover: focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                </svg>
+            </button>
+        </div>
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+            <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                <li>
+                    <a href="#" class="block py-2 px-3 text-white bg-[#FF7F0B80] rounded md:bg-transparent md:text[#FF7F0B] md:p-0 md:dark:text-[#FF7F0B]" aria-current="page">المشكلة</a>
+                </li>
+                <li>
+                    <a href="#7al" class="block py-2 px-3 text-gray-900 rounded hover: md:hover:bg-transparent md:hover:text[#FF7F0B] md:p-0 md:dark:hover:text-[#FF7F0B] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">الحل</a>
+                </li>
+                <li>
+                    <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#FF7F0B] md:p-0 md:w-auto dark:text-white md:dark:hover:text-[#FF7F0B] dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+                        كيف
+                        <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"></path>
+                        </svg>
+                    </button>
+                    <!-- Dropdown menu -->
+                    <div id="dropdownNavbar" class="z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 hidden">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownNavbarLink">
+                            <li><a href="#example" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">مثال</a></li>
+                            <li><a href="#تصنيف" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">تصنيف الكلمات</a></li>
+                            <li><a href="#فهارس_إضافية" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">فهارس إضافية</a></li>
+                            <li><a href="#الإعدادات" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">الإعدادات</a></li>
+                            <li><a href="#إصدار_الفهارس" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">إصدار الفهارس وحل المشاكل</a></li>
+                            <li><a href="#العناوين" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">إصدار فهرس العناوين</a></li>
+                            <li><a href="#الترقيم" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">الترقيم والتعديلات النهائية</a></li>
+                            <li><a href="#تجهيز" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">تجهيز الآيات</a></li>
+                            <li><a href="#الشائعة" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">الشائعة</a></li>
+                            <li><a href="#بن" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">سطر أوله بني</a></li>
+                            <li><a href="#أبيات" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">أبيات شعرية</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" class="block py-2 px-3 text-gray-900 rounded hover: md:hover:bg-transparent md:hover:text-[#FF7F0B] md:p-0 md:dark:hover:text-[#FF7F0B] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">متطلبات البرنامج</a>
+                </li>
+                <li>
+                    <a href="#" class="block py-2 px-3 text-gray-900 rounded hover: md:hover:bg-transparent md:hover:text-[#FF7F0B] md:p-0 md:dark:hover:text-[#FF7F0B] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">تثبيت البرنامج</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--HEADER END-->
+<div id="problem" class="max-w-4xl mx-auto bg-[#FFF9EB] from-gray-50 to-blue-50 shadow-md rounded-lg p-8 space-y-8 text-gray-800 leading-relaxed mt-[100px] sm:!mt-[150px] mb-20">
+    <h2 class="text-3xl font-bold text-[#FF7F0B] text-center mb-6">المشكلة</h2>
+
+    <p class="text-lg text-gray-700 leading-relaxed">
+        أيها الباحث العربي،
+    </p>
+
+    <p class="text-lg text-gray-700 leading-relaxed">
+        المشكلة تمكن في كونك مطالَبا بإعداد فهارس دقيقة وليس لديك الأداة التي تسمح لك بالقيام بذلك بسهولة ويسر.
+    </p>
+
+    <p class="text-lg text-gray-700 leading-relaxed mb-6">
+        أنت باحث تقوم بإعداد  دراسة أو بحث باللغة العربية، وفي ختام هذا البحث، تحتاج أن تسرد عددا من الفهارس التي لا بد منها لبيان دقة البحث واحترافيته.
+    </p>
+
+    <p class="text-lg text-gray-700 leading-relaxed ">
+        لكن ليس هناك طريقة سهلة لبناء الفهارس، لا سيما والمطلوب في الدراسات العربية فهارس مختلفة قد لا تكون مطلوبة في الدراسات المكتوبة باللغات الأجنبية.
+    </p>
+    <p class="text-lg text-gray-700 leading-relaxed ">
+        على سبيل المثال، هناك فهرس للأعلام وهو يضم الشخصيات التي ذكرتها في بحثك مع شيء من سيرتهم الذاتية. وهناك فهرس الآيات الذي ينبغي أن تعده بترتيب المصحف وليس بترتيب ورود الآيات ولا الترتيب الأبجدي. وهناك أشياء عدة مطلوبة من الباحث العربي على وجه الخصوص. وهناك فهرس الأحاديث وفهرس الملل والنحل وفهرس الشعر وفهرس الغزوات وفهرس البلدان وفهرس المصطلحات ... وغير ذلك من الفهارس التي تحتاج الى أن تكون دقيقة.
+    </p>
+    <p class="text-lg text-gray-700 leading-relaxed ">
+        كل ذلك يجعلك في أمس الحاجة إلى أداة تساعدك للنجاح في مهمتك.
+    </p>
+    <p class="text-lg text-gray-700 leading-relaxed ">
+        المشكلة ان الفهرس يتضمن اسم البلد على سبيل المثال او اسم الغزوة ثم رقم الصحيفة التي ورد فيها ذكر البلد أو الغزوة.
+    </p>
+    <p class="text-lg text-gray-700 leading-relaxed ">
+        كثير من الباحثين يعتمدون على العمل اليدوي في هذا الإطار. فتجدهم يعملون على الورقة البحثية حتى إذا انتهوا من كتابتها راحوا يراقبون أرقام الصحائف ويجمعون أين وردت هذه الكلمة وأين ظهرت تلك الآية ... وهكذا تراهم يقومون بالعمل المضني الذي يتلاشى إذا زادوا سطرا واحدا في أول البحث أو غيروا حجم الخط أو أصلحوا عبارة خاطئة أو عدلوا الهوامش ... إذ كل ذلك سيؤدي حتما إلى تغيير أرقام الصحائف ما يعني أن كل العمل المضني الذي قاموا به ذهب هباء منثورا.
+    </p>
+     <p class="text-lg text-gray-700 leading-relaxed ">
+         وإذا كنت طالبا تُجهّز بحثك وترسله إلى الدكتور المشرف، فأنت تعلم أنه سيطلب منك العديد من التغييرات في كل مرة يرى فيها بحثك، وهذا يعني أن الفهارس سيتم تدميرها بالكامل في كل مرة. يا لها من دوامة!
+    </p>
+         <p class=" text-lg text-gray-700 leading-relaxed font-semibold">
+             هذه كانت المشكلة. فما الحل؟
+    </p>
+
+
+
+
+</div>
+<div class="max-w-4xl mx-auto bg-[#FFF9EB] from-gray-50 to-blue-50 shadow-md rounded-lg p-8 space-y-8 text-gray-800 leading-relaxed mb-20">
+    <h2 id="7al" class="text-4xl font-extrabold text-[#FF7F0B] text-center mb-8">الحل</h2>
+
+    <p class="text-lg text-gray-700 leading-relaxed mb-4">
+        الحل يكمن في برنامج الفهارس، فهو يسهل حياة الباحث الكاتب باللغة العربية ويؤمن له كل ما يحتاجه لإصدار الفهارس دون عناء.
+    </p>
+
+    <p class="text-lg text-gray-700 leading-relaxed mb-8">
+        برنامج الفهارس سهل الاستخدام ويمكّنك من إصدار الفهارس التالية:    </p>
+
+    <ul class="space-y-6">
+        <li class="flex items-center space-x-4 hover:bg-blue-50 px-3  rounded-lg transition-all duration-200 ease-in-out">
+            <i class="mx-3 fas fa-book-open text-2xl text-[#FF7F0B]"></i>
+            <span class="text-lg font-medium text-gray-700">فهرس الشعر</span>
+        </li>
+        <li class="flex items-center space-x-4 hover:bg-blue-50 px-3  rounded-lg transition-all duration-200 ease-in-out">
+            <i class="mx-3 fas fa-users text-2xl text-[#FF7F0B]"></i>
+            <span class="text-lg font-medium text-gray-700">فهرس الأعلام</span>
+        </li>
+        <li class="flex items-center space-x-4 hover:bg-blue-50 px-3  rounded-lg transition-all duration-200 ease-in-out">
+            <i class="mx-3 fas fa-quran text-2xl text-[#FF7F0B]"></i>
+            <span class="text-lg font-medium text-gray-700">فهرس الآيات</span>
+        </li>
+        <li class="flex items-center space-x-4 hover:bg-blue-50 px-3  rounded-lg transition-all duration-200 ease-in-out">
+            <i class="mx-3 fas fa-book text-2xl text-[#FF7F0B]"></i>
+            <span class="text-lg font-medium text-gray-700">فهرس الأحاديث</span>
+        </li>
+        <li class="flex items-center space-x-4 hover:bg-blue-50 px-3  rounded-lg transition-all duration-200 ease-in-out">
+            <i class="mx-3 fas fa-clipboard-list text-2xl text-[#FF7F0B]"></i>
+            <span class="text-lg font-medium text-gray-700">فهرس المصطلحات</span>
+        </li>
+        <li class="flex items-center space-x-4 hover:bg-blue-50 px-3  rounded-lg transition-all duration-200 ease-in-out">
+            <i class="mx-3 fas fa-globe text-2xl text-[#FF7F0B]"></i>
+            <span class="text-lg font-medium text-gray-700">فهرس البلدان</span>
+        </li>
+        <li class="flex items-center space-x-4 hover:bg-blue-50 px-3  rounded-lg transition-all duration-200 ease-in-out">
+            <i class="mx-3 fas fa-bolt text-2xl text-[#FF7F0B]"></i>
+            <span class="text-lg font-medium text-gray-700">فهرس الغزوات</span>
+        </li>
+        <li class="flex items-center space-x-4 hover:bg-blue-50 px-3  rounded-lg transition-all duration-200 ease-in-out">
+            <i class="mx-3 fas fa-users-cog text-2xl text-[#FF7F0B]"></i>
+            <span class="text-lg font-medium text-gray-700">فهرس الملل والنحل</span>
+        </li>
+        <li class="flex items-center space-x-4 hover:bg-blue-50 px-3  rounded-lg transition-all duration-200 ease-in-out">
+            <i class="mx-3 fas fa-list-alt text-2xl text-[#FF7F0B]"></i>
+            <span class="text-lg font-medium text-gray-700">فهرس العناوين (أو ما يعرف باسم الفهرست العام أو فهرس المواضيع)</span>
+        </li>
+        <li class="flex items-center space-x-4 hover:bg-blue-50 px-3  rounded-lg transition-all duration-200 ease-in-out">
+            <i class="mx-3 fas fa-ellipsis-h text-2xl text-[#FF7F0B]"></i>
+            <span class="text-lg font-medium text-gray-700">وعشرة فهارس أخرى يمكنك استخدامها كما تريد وفي الإطار الذي تراه مناسبا حيث أن تحدد وجهة الاستخدام</span>
+        </li>
+    </ul>
+</div>
+<div class="max-w-4xl mx-auto bg-[#FFF9EB] from-gray-50 to-blue-50 shadow-md rounded-lg p-8 space-y-8 text-gray-800 leading-relaxed">
+    <!-- Section 1: Introduction -->
+    <section id="how">
+        <p class="text-lg font-semibold text-gray-700">
+            كيف
+        </p>
+        <p class="text-gray-700">
+            كل ما عليك فعله هو اختيار كلمة، ثم الضغط على أحد الأزرار في قائمة الفهارس كما هو مبين أدناه:
+        </p>
+        <div class="relative group w-full max-w-3xl mx-auto mt-5">
+            <!-- Image -->
+            <img src="imgs/image_1.png" alt="Attractive Image" class="w-full rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-110">
+
+        </div>
+    </section>
+
+    <!-- Section 2: Example -->
+    <section id="example">
+        <h2 class="text-xl font-bold text-gray-800 ">مثال</h2>
+        <p class="text-gray-700">
+            لنقل مثلا أنك اخترت كلمة من النص وهي <strong class="text-[#FF7F0B]">الجزائر</strong>، وتريد أن تضيفها إلى فهرس <strong class="text-[#FF7F0B]">البلدان</strong>. كل ما عليك فعله هو النقر على زر <span class="text-[#FF7F0B] font-bold">(بلد)</span> في قائمة الفهارس أعلاه. وبهذا تكون انتهيت.
+        </p>
+        <p class="text-gray-700">
+            إن هذه الطريقة هي مختصرة للغاية وسهلة المراقبة لأنه تعتمد <strong class="text-[#FF7F0B]">الألوان</strong> فكل نوع من أنواع الفهارس يستخدم لونا معينا فيمكنك بنظرة واحدة أن تميز بين <strong class="text-[#FF7F0B]">البلد</strong> و<strong class="text-[#FF7F0B]">الشعر</strong> و<strong class="text-[#FF7F0B]">المصطلح</strong> وغير ذلك.
+        </p>
+        <p class="text-gray-700">
+            بكل بساطة، يمكنك تحديد أي <strong class="text-[#FF7F0B]">عبارة</strong> من ملفك البحثي ثم الضغط على أحد الأزرار في قائمة الفهارس.
+        </p>
+    </section>
+
+    <!-- Section 3: Classification -->
+    <section id="تصنيف">
+        <h2 class="text-xl font-bold text-gray-800 ">تصنيف الكلمات</h2>
+        <p class="text-gray-700">
+            إن فعلت ذلك، فهذا يعني أنك تقوم بتصنيف الكلمة المحددة بكونها تنتمي إلى الزر الذي ضغطت عليه.
+        </p>
+        <p class="text-gray-700">
+            مثلا، اختر <strong class="text-[#FF7F0B]">بلدا</strong> او <strong class="text-[#FF7F0B]">مدينة</strong> ثم انقر على الزر المسمى <span class="text-orange-600 font-bold">بلد</span>. سوف تجد أن الاسم تم تلوينه <span class="text-orange-600 font-semibold">بالبرتقالي</span> وتم اعتباره بلدا.
+        </p>
+        <p class="text-gray-700">
+            فيما بعد، سيمكنك إصدار فهرس <strong class="text-[#FF7F0B]">البلدان</strong> بكل سهولة وبضغطة زر واحدة.
+        </p>
+    </section>
+
+    <!-- Section 4: Additional Indexes -->
+    <section id="فهارس_إضافية">
+        <h2  class="text-xl font-bold text-gray-800 ">فهارس إضافية</h2>
+        <p class="text-gray-700">
+            كما ترى في القائمة أعلاه، فهناك عدد من الفهارس الإضافية التي هي غير مسماة ومتروكة لك لتقوم بتسميتها كما تريد.
+        </p>
+        <p class="text-gray-700">
+            هناك على سبيل المثال، من الحرف <strong class="text-[#FF7F0B]">I</strong> إلى الحرف <strong class="text-[#FF7F0B]">R</strong> ... وهي متروكة بلا اسم لتستختدمها أنت كما تريد، فأنت قد تقرر أن تخصص الحرف <strong class="text-[#FF7F0B]">M</strong> للأدوية أن كنت تعمل على بحث صحي أو تخصص الحرف <strong class="text-[#FF7F0B]">N</strong> للنباتات أن كنت تعمل على بحث زراعي وهكذا فقد تركنا لك عشرة فهارس تتحكم فيها أنت.
+        </p>
+        <p class="text-gray-700">
+            دعنا نكتشف الآن المزيد من إمكانيات قائمة الفهارس:
+        </p>
+    </section>
+
+    <!-- Section 5: Settings -->
+    <section id="الإعدادات">
+        <h2  class="text-xl font-bold text-gray-800 ">الإعدادات</h2>
+        <p class="text-gray-700">
+            هناك أيضا في القائمة مجموعة اسمها <span class="font-bold">إعدادات</span>، وفيها خياران: <strong>مفردات مطابقة</strong> و<strong>المفردة المحددة</strong>.
+        </p>
+        <div class="relative group w-full max-w-[150px] mx-auto my-5">
+            <!-- Image -->
+            <img src="imgs/image_2.png" alt="Attractive Image" class="w-full rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-110">
+
+        </div>
+        <p class="text-gray-700">
+            إذا ضغطت على الخيار الأول <span class="font-semibold">(مفردات مطابقة)</span> ثم اخترت بعد ذلك كلمة واحدة مثل <span class="text-[#FF7F0B] font-bold">العراق</span> ونقرت على زر <span class="text-orange-600 font-bold">بلد</span> في قائمة الفهارس فسيتم تطبيق هذه السياسة على كل كلمات <span class="text-[#FF7F0B]">العراق</span> الموجودة في الملف باعتبار أنها بلد.
+        </p>
+        <p class="text-gray-700">
+            ويكفي أن تضغط على هذا الخيار <span class="font-semibold">(مفردات مطابقة)</span> مرة واحدة (عندما تفتح الملف) ولست مضطرا للضغط عليه كلما قمت بتحديد كلمة.
+        </p>
+        <br>
+        <p class="text-gray-700">
+            أما اذا استعملت الخيار الآخر <span class="font-semibold">(المفردة المحددة)</span> فمعناه أن الكلمة التي اخترتها فقط سيتم اعتبارها بلدا من البلدان دون بقية الكلمات المطابقة.
+        </p>
+    </section>
+
+    <!-- Section 6: Index and Issue Fixing -->
+    <section id="إصدار_الفهارس">
+        <h2  class="text-xl font-bold text-gray-800 ">إصدار الفهارس وحل المشاكل</h2>
+        <p class="text-gray-700">
+            إن لم تقم بالنقر على أي من هذين الخيارين <span class="font-semibold">(مفردات مطابقة والمفردة المحددة)</span> سيتصرف البرنامج كأنك اخترت <span class="font-semibold">(المفردة المحددة)</span> أي سيقوم بتلوين المفردة التي اخترتها ويترك المفردات الأخرى ولو كانت مطابقة في الحروف.
+        </p>
+        <p class="text-gray-700">
+            اصبر قليلا، لا تبدأ بتجربة الأزرار، لأن الأزرار لا تعمل إلا إذا كنت قد فتحت ملفا مجهزا وسوف نشرح لك قريبا كيف تفعل ذلك. الآن نحن بصدد سرد المميزات وشرح إمكانات البرنامج لتعرف حدوده وفوائده.
+        </p>
+
+
+    </section>
+
+    <!-- Section 7: Table of Contents -->
+    <section id="العناوين">
+        <h2  class="text-xl font-bold text-gray-800 ">إصدار فهرس العناوين</h2>
+        <p class="text-gray-700">
+            أما بخصوص إصدار فهرس العناوين (أو ما يعرف باسم الفهرست العام أو فهرس المواضيع) فما عليك إلا أن تختار العنوان الذي تريده ثم النقر على <span class="text-green-600 font-bold">Heading 1</span> في القائمة المسماة <span class="font-semibold">Home</span> لتجعل هذا العنوان عنوانا رئيسيا.
+        </p>
+        <div class="relative group w-full max-w-3xl mx-auto my-5">
+            <!-- Image -->
+            <img src="imgs/image_3.png" alt="Attractive Image" class="w-full rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-110">
+
+        </div>
+        <p class="text-gray-700">
+            وإذا أردت عنوانا ثانويا، فانقر على <span class="text-green-600 font-bold">Heading 2</span>
+        </p>
+        <p class="text-gray-700">
+            بعد أن تحدد كل العناوين، انقر على زر <span class="text-[#FF7F0B] font-bold">فهرس العناوين</span> لتحصل على الجدول كما هو مبين في الجدول أدناه:
+        </p>
+        <div class="relative group w-full max-w-3xl mx-auto my-5">
+            <!-- Image -->
+            <img src="imgs/image_4.png" alt="Attractive Image" class="w-full rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-110">
+
+        </div>
+    </section>
+
+    <!-- Section 8: Footer and Final Adjustments -->
+    <section id="الترقيم">
+        <h2  class="text-xl font-bold text-gray-800 ">الترقيم والتعديلات النهائية</h2>
+        <p class="text-gray-700">
+            أما بخصوص <span class="font-semibold">ترقيم الحاشية</span> المبينة في الصورة التالية، فهو حل لمشكلة يواجهها الباحثون الكاتبون باللغة العربية منذ مدة طويلة ولم يتم حلها جذريا إلا الآن، بعد صدور برنامج الفهارس.
+        </p>
+        <div class="relative group w-full max-w-sm mx-auto my-5">
+            <!-- Image -->
+            <img src="imgs/image_5.png" alt="Attractive Image" class="w-full rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-110">
+
+        </div>
+        <p class="text-gray-700">في الواقع، إن برنامج Word أحيانا يخطئ في تسلسل الحاشية فلا يبدأ كل صحيفة بترقيم الحواشي بدءا من الرقم واحد وتجد التسلسل مكملا لما هو في الصحيفة السابقة. فعلى سبيل المثال، تكون الصحيفة الأولى تضم حاشية محشوة بعدد من الأسطر وتحمل الحاشية الرقم 1، ثم في الصحيفة التي تليها تجد ان رقم الحاشية هو اثنان بدل أن يكون واحدا من جديد. هذه المشكلة قضت مضاجع العديد من الباحثين الذي حاولوا عبثا حل هذه المشكلة واضطروا في النهاية الى التوجه إلى العمل اليدوي المضني غير الفعال.</p>
+        <p class="text-gray-700">هذا الزر يحل المشكلة فيتم إصلاح ترقيم الحواشي فيبدأ بالرقم واحد مجددا في كل صحيفة.</p>
+    </section>
+    <!-- Section: Preparing  -->
+    <section id="تجهيز">
+        <h2  class="text-xl font-bold text-gray-800">تجهيز الآيات</h2>
+        <p class="text-gray-700">
+            أما زر <span class="text-[#FF7F0B]">تجهيز الآيات</span> (الظاهر في الصورة التالية) فيقوم بإصدار ملف جديد يشرح لك كيف تقوم بتجهيز الآيات حتى يتمكن البرنامج من إصدار فهرس الآيات الذي لا بد أن يكون مرتبا حسب رقم السورة ورقم الآية ولا بد أن يكون كذلك بخط المصحف.
+        </p>
+        <div class="relative group w-full max-w-[120px] mx-auto my-5">
+            <!-- Image -->
+            <img src="imgs/image_6.png" alt="Attractive Image" class="w-full rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-110">
+
+        </div>
+    </section>
+
+    <!-- Section: Common Errors -->
+    <section id="الشائعة">
+        <h2  class="text-xl font-bold text-gray-800">الأخطاء الشائعة</h2>
+        <p class="text-gray-700">
+            أما زر <span class="text-[#FF7F0B]">الأخطاء الشائعة</span> الملاصق لزر تجهيز الآيات، فهو يعرض لك عددا من الأخطاء التي يحسن تجنبها. فعلى سبيل المثال، اذا كان في ملفك فاصلة وقبلها فراغ، فهذا قد يؤدي إلى مشكلة لأن الفاصلة إذا كانت في نهاية السطر وقبلها فراغ ثم ضاق السطر تقفز الفاصلة إلى السطر الثاني وحدها دون الكلمة التي معها وذلك لأنها يفصلها فراغ عن تلك الكلمة. فلو كانت الفاصلة متصلة بالكلمة، إما تنزل الكلمة والفاصلة إلى السطر الثاني أو تبقى الكلمة والفاصلة في السطر الأول.
+        </p>
+        <p class="text-gray-700">
+            وعلى هذا، فهناك عدد من المشاكل يحلها الضغط على هذا الزر. وهو يعطيك الخيارات التالية:
+        </p>
+        <div class="relative group w-full max-w-sm mx-auto my-5">
+            <!-- Image -->
+            <img src="imgs/image_7.png" alt="Attractive Image" class="w-full rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-110">
+
+        </div>
+        <p class="text-gray-700">
+            بمجرد اختيار ما تريد والضغط على زر <span class="text-[#FF7F0B]">التنفيذ</span>، يتم إصلاح الأمر. واختيارك للخيار الأخير، يتيح لك تنفيذ كل هذه الإصلاحات دفعة واحدة.
+        </p>
+    </section>
+
+    <!-- Section: Searching for 'بن' at the Start of Lines -->
+    <section id="بن">
+        <h2 class="text-xl font-bold text-gray-800">سطر أوله بن</h2>
+        <div class="relative group w-full max-w-xs mx-auto my-5">
+            <!-- Image -->
+            <img src="imgs/image_8.png" alt="Attractive Image" class="w-full rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-110">
+
+        </div>
+        <p class="text-gray-700">
+            أما بخصوص الزر المسمى <span class="text-[#FF7F0B]">سطر أوله بن</span> فإن هذا الزر يقوم بالبحث عن كل الاسطر التي تبدأ بكلمة <span class="text-[#FF7F0B]">بن</span> ويأتي بعدها فراغ. حسب القواعد، ينبغي أن يتم تحويل هذه الكلمات (بن في أول السطر) الى <span class="text-[#FF7F0B]">ابن</span> ما سيفعله البرنامج هو تلوين خلفية الكلمة بالأصفر للفت النظر، ثم سيتم إعطاؤك لائحة بكل الصحائف التي فيها تلك الكلمة لتصلحها أنت بإضافة الألف لكلمة <span class="text-[#FF7F0B]">بن</span> أو تطبيق تعديل خفيف بحيث لا يعود السطر يبدأ بكلمة <span class="text-[#FF7F0B]">بن</span>.
+        </p>
+    </section>
+
+    <!-- Section: Poetry Lines -->
+    <section id="أبيات">
+        <h2 class="text-xl font-bold text-gray-800">أبيات شعرية</h2>
+        <p class="text-gray-700">
+            أما بخصوص الزر المسمى <span class="text-[#FF7F0B]">أبيات شعرية</span> فإن هذا الزر يُسهّل عليك تحويل الأبيات إلى نص يتم عرضه بطريقة منتظمة للغاية تفصل الشطرين وتجعل الأبيات تشغل كل المساحة الأفقية على طول القصيدة، فتكون الشطور جميعها تتمتع بالطول عينه دون اللجوء إلى الحلول اليدوية التي يحاول من خلالها البعض تطويل هذه الكلمة أو تلك لتبقى الشطور متساوية في المساحة المشغولة.
+        </p>
+        <p class="text-gray-700">
+            كل ما عليك فعله هو الفصل بين الشطرين بالرمز <span class="text-[#FF7F0B]">(@@)</span>. قم بتحديد النص الذي تريد تحويله ثم انقر على زر: <span class="text-[#FF7F0B]">أبيات شعرية</span>.
+        </p>
+        <p class="text-gray-700">
+            وهكذا إذا اخترت هذين البيتين:
+        </p>
+        <p class="text-gray-700">
+            <span class="text-[#FF7F0B]">الخيل والليل والبيداء تعرفني@@والسيف والرمح والقرطاس والقلم</span>
+        </p>
+        <p class="text-gray-700">
+            <span class="text-[#FF7F0B]">أنا الذي نظر الأعمى إلى أدبي@@وأسمعت كلماتي من به صمم</span>
+        </p>
+        <br>
+        <p class="text-gray-700">
+            فسوف يتم تحويلهما إلى ما يلي:
+        </p>
+        <br>
+        <pre style="font-family: 'Amiri', serif" class="text-gray-700">
+            الخيل والليل والبيداء تعرفني            والسيف والرمح والقرطاس والقلم
+        </pre>
+        <pre style="font-family: 'Amiri', serif" class="text-gray-700">
+            أنا الذي نظر الأعمى إلى أدبي            وأسمعت كلماتي من به صمم
+        </pre>
+
+    </section>
+
+</div>
+
+
+
+<!--footer start-->
+<footer class=" bottom-0 left-0 z-20 w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
+    <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"> فريق عمل برنامج الفهرس</span>
+    <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+        <li>
+            <a href="#" class="hover:underline me-4 md:me-6">المشكلة</a>
+        </li>
+        <li>
+            <a href="#" class="hover:underline me-4 md:me-6">كيف</a>
+        </li>
+        <li>
+            <a href="#" class="hover:underline me-4 md:me-6">تحميل البرنامج</a>
+        </li>
+        <li>
+            <a href="#" class="hover:underline me-4 md:me-6">متطلبات البرنامج</a>
+        </li>
+        <li>
+            <a href="#" class="hover:underline me-4 md:me-6">تثبيت البرنامج</a>
+        </li>
+    </ul>
+</footer>
+
+<!--footer end-->
+<script src="https://cdn.jsdelivr.net/npm/flowbite@latest/dist/flowbite.min.js"></script>
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const target = document.querySelector(this.getAttribute('href'));
+            const offset = 100; // Adjust this value based on your navbar height
+            const topPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+
+            window.scrollTo({
+                top: topPosition,
+                behavior: 'smooth'
+            });
+        });
+    });
+
+</script>
+</body>
+</html>
