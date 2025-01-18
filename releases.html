@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>برنامج الفهارس</title>
+    <!--test-->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="/logo.png">
+    <link rel="shortcut icon" href="/logo.png">
+
+    <style>
+        body {
+            font-family: 'Amiri', serif;
+        }
+
+        section {
+            scroll-margin-top: 100px; /* Adjust based on your navbar height */
+        }
+    </style>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        prime: '#e37b21',
+                    },
+                },
+            },
+        };
+    </script>
+    <!-- Flowbite CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet">
+</head>
+<body class="bg-slate-200">
+<!--HEADER START-->
+<nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <span class="self-center text-2xl text-[#e37b21] font-semibold whitespace-nowrap dark:text-white">برنامج الفهارس</span>
+        </a>
+        <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+            <a href="/#download" type="button"
+               class="hover:!bg-[#e37b2180] transition !bg-[#e37b21] focus:ring-4 focus:outline-none focus:ring-[#e37b21] font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-[#e37b21] dark:hover:bg-[#e37b2180] dark:focus:ring-[#e37b21]">
+                تحميل الآن
+            </a>
+            <button data-collapse-toggle="navbar-sticky" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover: focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="navbar-sticky" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                     viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M1 1h15M1 7h15M1 13h15"/>
+                </svg>
+            </button>
+        </div>
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+            <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                <li>
+                    <a href="/#"
+                       class="block py-2 px-3 text-white bg-[#e37b2180] rounded md:bg-transparent md:text[#e37b21] md:p-0 md:dark:text-[#e37b21]"
+                       aria-current="page">المشكلة</a>
+                </li>
+                <li>
+                    <a href="/#problem"
+                       class="block py-2 px-3 text-gray-900 rounded hover: md:hover:bg-transparent md:hover:text[#e37b21] md:p-0 md:dark:hover:text-[#e37b21] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">المشكلة</a>
+                </li>
+                <li>
+                    <a href="/#solution"
+                       class="block py-2 px-3 text-gray-900 rounded hover: md:hover:bg-transparent md:hover:text[#e37b21] md:p-0 md:dark:hover:text-[#e37b21] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">الحل</a>
+                </li>
+
+                <li>
+                    <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
+                            class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#e37b21] md:p-0 md:w-auto dark:text-white md:dark:hover:text-[#e37b21] dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+                        كيف
+                        <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                             fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="m1 1 4 4 4-4"></path>
+                        </svg>
+                    </button>
+                    <!-- Dropdown menu -->
+                    <div id="dropdownNavbar"
+                         class="z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 hidden">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownNavbarLink">
+                            <li><a href="/#example"
+                                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">مثال</a>
+                            </li>
+                            <li><a href="/#تصنيف"
+                                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">تصنيف
+                                الكلمات</a></li>
+                            <li><a href="/#فهارس_إضافية"
+                                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">فهارس
+                                إضافية</a></li>
+                            <li><a href="/#الإعدادات"
+                                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">الإعدادات</a>
+                            </li>
+                            <li><a href="/#إصدار_الفهارس"
+                                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">إصدار
+                                الفهارس وحل المشاكل</a></li>
+                            <li><a href="/#العناوين"
+                                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">إصدار
+                                فهرس العناوين</a></li>
+                            <li><a href="/#الترقيم"
+                                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">الترقيم
+                                والتعديلات النهائية</a></li>
+                            <li><a href="/#تجهيز"
+                                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">تجهيز
+                                الآيات</a></li>
+                            <li><a href="/#الشائعة"
+                                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">الشائعة</a>
+                            </li>
+                            <li><a href="/#بن"
+                                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">سطر
+                                أوله بني</a></li>
+                            <li><a href="/#أبيات"
+                                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">أبيات
+                                شعرية</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="/#req"
+                       class="block py-2 px-3 text-gray-900 rounded hover: md:hover:bg-transparent md:hover:text-[#e37b21] md:p-0 md:dark:hover:text-[#e37b21] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">متطلبات
+                        البرنامج</a>
+                </li>
+                <li>
+                    <a href="/#install"
+                       class="block py-2 px-3 text-gray-900 rounded hover: md:hover:bg-transparent md:hover:text-[#e37b21] md:p-0 md:dark:hover:text-[#e37b21] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">تثبيت
+                        البرنامج</a>
+                </li>
+
+                <li>
+                    <a href="/#contact_us"
+                       class="block py-2 px-3 text-gray-900 rounded hover: md:hover:bg-transparent md:hover:text-[#e37b21] md:p-0 md:dark:hover:text-[#e37b21] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                        للتواصل معنا
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--HEADER END-->
+<div id="releases"
+     class="max-w-xs sm:max-w-4xl mx-auto bg-[#FFF9EB] shadow-md rounded-lg p-6 space-y-6 text-gray-800 leading-relaxed mb-20 mt-[120px]">
+    <h2 class=" text-2xl sm:text-3xl font-bold text-[#e37b21] text-center mb-4">
+        <img src="logo.png" class="h-8 w-8 mx-auto mb-2">
+        الإصدارات     </h2>
+    <div class="text-right">
+        <p class="text-lg text-center mb-6">هنا تجد جميع الإصدارات الخاصة ببرنامج الفهارس.</p>
+
+        <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-[#f8c68d] dark:bg-[#c05c15] dark:text-white">
+                <tr>
+                    <th scope="col" class="px-6 py-3">رقم النسخة</th>
+                    <th scope="col" class="px-6 py-3">تاريخ الإصدار</th>
+                    <th scope="col" class="px-6 py-3">رابط التنزيل</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Release 1 -->
+                <tr class="bg-white border-b hover:bg-[#fad8bb] dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-[#e37b21]">
+                    <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">1.0.0</td>
+                    <td class="px-6 py-4">18 يناير 2025</td>
+                    <td class="px-6 py-4">
+                        <a href="/#" class="text-[#e37b21] hover:text-[#b95f19] hover:underline">تحميل</a>
+                    </td>
+                </tr>
+                <!-- Release 2 -->
+                <tr class="bg-gray-50 border-b hover:bg-[#fad8bb] dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-[#e37b21]">
+                    <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">1.1.0</td>
+                    <td class="px-6 py-4">20 يناير 2025</td>
+                    <td class="px-6 py-4">
+                        <a href="/#" class="text-[#e37b21] hover:text-[#b95f19] hover:underline">تحميل</a>
+                    </td>
+                </tr>
+                <!-- Release 3 -->
+                <tr class="bg-white border-b hover:bg-[#fad8bb] dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-[#e37b21]">
+                    <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">1.2.0</td>
+                    <td class="px-6 py-4">25 يناير 2025</td>
+                    <td class="px-6 py-4">
+                        <a href="/#" class="text-[#e37b21] hover:text-[#b95f19] hover:underline">تحميل</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+
+<!--footer start-->
+<footer class="fixed bottom-0 left-0 z-20 w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
+    <span class="text-sm text-gray-500 text-center md:text-right dark:text-gray-400">
+        فريق عمل برنامج الفهارس
+    </span>
+    <ul class="flex flex-wrap justify-center md:justify-end items-center mt-3 space-x-4 rtl:space-x-reverse text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+        <li>
+            <a href="/#problem" class="hover:text-[#e37b21] transition hover:underline">المشكلة</a>
+        </li>
+        <li>
+            <a href="/#how" class="hover:text-[#e37b21] transition hover:underline">كيف</a>
+        </li>
+        <li>
+            <a href="/#download" class="hover:text-[#e37b21] transition hover:underline">تحميل البرنامج</a>
+        </li>
+        <li>
+            <a href="/#req" class="hover:text-[#e37b21] transition hover:underline">متطلبات البرنامج</a>
+        </li>
+        <li>
+            <a href="/#install" class="hover:text-[#e37b21] transition hover:underline">تثبيت البرنامج</a>
+        </li>
+    </ul>
+</footer>
+
+<!--footer end-->
+<script src="https://cdn.jsdelivr.net/npm/flowbite@latest/dist/flowbite.min.js"></script>
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const target = document.querySelector(this.getAttribute('href'));
+            const offset = 100; // Adjust this value based on your navbar height
+            const topPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+
+            window.scrollTo({
+                top: topPosition,
+                behavior: 'smooth'
+            });
+        });
+    });
+
+</script>
+</body>
+</html>
