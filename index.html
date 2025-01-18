@@ -47,10 +47,10 @@
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">برنامج الفهرس</span>
         </a>
         <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            <button type="button"
-                    class="hover:!bg-[#FF7F0B80] transition !bg-[#FF7F0B] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-[#FF7F0B] dark:hover:bg-[#FF7F0B80] dark:focus:ring-[#FF7F0B]">
+            <a href="#download" type="button"
+                    class="hover:!bg-[#FF7F0B80] transition !bg-[#FF7F0B] focus:ring-4 focus:outline-none focus:ring-[#FF7F0B] font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-[#FF7F0B] dark:hover:bg-[#FF7F0B80] dark:focus:ring-[#FF7F0B]">
                 تحميل الآن
-            </button>
+            </a>
             <button data-collapse-toggle="navbar-sticky" type="button"
                     class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover: focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                     aria-controls="navbar-sticky" aria-expanded="false">
@@ -70,9 +70,14 @@
                        aria-current="page">المشكلة</a>
                 </li>
                 <li>
-                    <a href="#7al"
+                    <a href="#problem"
+                       class="block py-2 px-3 text-gray-900 rounded hover: md:hover:bg-transparent md:hover:text[#FF7F0B] md:p-0 md:dark:hover:text-[#FF7F0B] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">المشكلة</a>
+                </li>
+                <li>
+                    <a href="#solution"
                        class="block py-2 px-3 text-gray-900 rounded hover: md:hover:bg-transparent md:hover:text[#FF7F0B] md:p-0 md:dark:hover:text-[#FF7F0B] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">الحل</a>
                 </li>
+
                 <li>
                     <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
                             class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#FF7F0B] md:p-0 md:w-auto dark:text-white md:dark:hover:text-[#FF7F0B] dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
@@ -124,14 +129,21 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="#req"
                        class="block py-2 px-3 text-gray-900 rounded hover: md:hover:bg-transparent md:hover:text-[#FF7F0B] md:p-0 md:dark:hover:text-[#FF7F0B] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">متطلبات
                         البرنامج</a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="#install"
                        class="block py-2 px-3 text-gray-900 rounded hover: md:hover:bg-transparent md:hover:text-[#FF7F0B] md:p-0 md:dark:hover:text-[#FF7F0B] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">تثبيت
                         البرنامج</a>
+                </li>
+
+                <li>
+                    <a href="#contact_us"
+                       class="block py-2 px-3 text-gray-900 rounded hover: md:hover:bg-transparent md:hover:text-[#FF7F0B] md:p-0 md:dark:hover:text-[#FF7F0B] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                        للتواصل معنا
+                    </a>
                 </li>
             </ul>
         </div>
@@ -189,7 +201,7 @@
 
 </div>
 <div class="max-w-xs sm:max-w-4xl mx-auto bg-[#FFF9EB] from-gray-50 to-blue-50 shadow-md rounded-lg p-8 space-y-8 text-gray-800 leading-relaxed mb-20">
-    <h2 id="7al" class="text-4xl font-extrabold text-[#FF7F0B] text-center mb-8">الحل</h2>
+    <h2 id="solution" class="text-4xl font-extrabold text-[#FF7F0B] text-center mb-8">الحل</h2>
 
     <p class="text-lg text-gray-700 leading-relaxed mb-4">
         الحل يكمن في برنامج الفهارس، فهو يسهل حياة الباحث الكاتب باللغة العربية ويؤمن له كل ما يحتاجه لإصدار الفهارس دون
@@ -525,7 +537,7 @@
 
     <p class="text-gray-700 dark:text-gray-300 mb-4">أرسل إلى أصدقائك عنه وكن سفيرا للغة العربية</p>
 </div>
-<div class="max-w-xs sm:max-w-4xl mx-auto bg-[#FFF9EB] from-gray-50 to-blue-50 shadow-md rounded-lg p-8 space-y-8 text-gray-800 leading-relaxed  mb-20">
+<div id="download" class="max-w-xs sm:max-w-4xl mx-auto bg-[#FFF9EB] from-gray-50 to-blue-50 shadow-md rounded-lg p-8 space-y-8 text-gray-800 leading-relaxed  mb-20">
     <h2 class="text-3xl font-bold text-[#FF7F0B] text-center mb-6">تحميل البرنامج</h2>
     <div class="max-w-screen-md mx-auto text-center">
         <p class="text-gray-700 dark:text-gray-300 mb-4">
@@ -548,8 +560,8 @@
         </a>
     </div>
 </div>
-<div class="max-w-xs sm:max-w-4xl mx-auto bg-[#FFF9EB] shadow-md rounded-lg p-6 space-y-6 text-gray-800 leading-relaxed mb-20">
-    <h2 class="text-2xl sm:text-3xl font-bold text-[#FF7F0B] text-center mb-4">
+<div id="req" class="max-w-xs sm:max-w-4xl mx-auto bg-[#FFF9EB] shadow-md rounded-lg p-6 space-y-6 text-gray-800 leading-relaxed mb-20">
+    <h2  class="text-2xl sm:text-3xl font-bold text-[#FF7F0B] text-center mb-4">
         متطلبات البرنامج
     </h2>
     <div class="text-right">
@@ -586,7 +598,7 @@
         </ul>
     </div>
 </div>
-<div class="max-w-xs sm:max-w-4xl mx-auto bg-[#FFF9EB] shadow-md rounded-lg p-6 space-y-6 text-gray-800 leading-relaxed mb-20">
+<div id="install" class="max-w-xs sm:max-w-4xl mx-auto bg-[#FFF9EB] shadow-md rounded-lg p-6 space-y-6 text-gray-800 leading-relaxed mb-20">
     <h2 class="text-2xl sm:text-3xl font-bold text-[#FF7F0B] text-center mb-4">
         تثبيت البرنامج
     </h2>
@@ -677,7 +689,7 @@
 
     </div>
 </div>
-<div class="max-w-xs sm:max-w-4xl mx-auto p-6 space-y-8 bg-[#FFF9EB] rounded-lg shadow-lg mb-20">
+<div id="contact_us" class="max-w-xs sm:max-w-4xl mx-auto p-6 space-y-8 bg-[#FFF9EB] rounded-lg shadow-lg mb-20">
     <h2 class="text-3xl font-bold text-[#FF7F0B] text-center mb-6">
         للتواصل معنا
     </h2>
@@ -689,7 +701,7 @@
                 <i class="fas fa-envelope text-2xl"></i>
             </div>
             <p class="text-lg font-semibold text-gray-800">Email</p>
-            <a href="mailto:rolahitani@gmail.com" class="text-[#FF7F0B] hover:text-blue-800">rolahitani@gmail.com</a>
+            <a href="mailto:rolahitani@gmail.com" class="text-[#FF7F0B] hover:text-[#FF7F0B]">rolahitani@gmail.com</a>
         </div>
 
         <!-- WhatsApp Card -->
@@ -698,7 +710,7 @@
                 <i class="fab fa-whatsapp text-2xl"></i>
             </div>
             <p class="text-lg font-semibold text-gray-800">WhatsApp</p>
-            <a dir="auto" href="https://wa.me/+96171351598" class="text-[#FF7F0B] hover:text-blue-800">+961-71-351598</a>
+            <a dir="auto" href="https://wa.me/+96171351598" class="text-[#FF7F0B] hover:text-[#FF7F0B]">+961-71-351598</a>
         </div>
 
         <!-- Telegram Card -->
@@ -707,7 +719,7 @@
                 <i class="fab fa-telegram-plane text-2xl"></i>
             </div>
             <p class="text-lg font-semibold text-gray-800">Telegram</p>
-            <a href="https://t.me/alfahares" class="text-[#FF7F0B] hover:text-blue-800">@alfahares</a>
+            <a href="https://t.me/alfahares" class="text-[#FF7F0B] hover:text-[#FF7F0B]">@alfahares</a>
         </div>
 
         <!-- Instagram Card -->
@@ -716,7 +728,7 @@
                 <i class="fab fa-instagram text-2xl"></i>
             </div>
             <p class="text-lg font-semibold text-gray-800">Instagram</p>
-            <a href="https://instagram.com/alfahares" class="text-[#FF7F0B] hover:text-blue-800">@alfahares</a>
+            <a href="https://instagram.com/alfahares" class="text-[#FF7F0B] hover:text-[#FF7F0B]">@alfahares</a>
         </div>
     </div>
 
